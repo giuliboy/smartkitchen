@@ -1,0 +1,32 @@
+﻿<Window x:Class="HSR.CloudSolutions.SmartKitchen.Simulator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:HSR.CloudSolutions.SmartKitchen.Simulator.Controls"
+        xmlns:devices="clr-namespace:HSR.CloudSolutions.SmartKitchen.Simulator.Simulation.Devices;assembly=SmartKitchen.Simulator.Simulation"
+        xmlns:ui="clr-namespace:HSR.CloudSolutions.SmartKitchen.UI;assembly=SmartKitchen.UI"
+        xmlns:templates="clr-namespace:HSR.CloudSolutions.SmartKitchen.UI.Templates;assembly=SmartKitchen.UI"
+        mc:Ignorable="d"
+        Title="SmartKitchen - Simulator" 
+        Height="555" Width="1200"
+        MinHeight="555" MinWidth="1200">
+    <Grid>
+        <controls:SimulatorControl DataContext="{Binding Path=Devices, Mode=OneWay}" SimulatorBackground="Images/Kitchen.jpg">
+            <templates:DynamicDataTypeBasedTemplateSelector>
+                <DataTemplate DataType="{x:Type devices:SimFridge}">
+                    <controls:FridgeUserControl/>
+                </DataTemplate>
+                
+                <DataTemplate DataType="{x:Type devices:SimOven}">
+                    <controls:OvenUserControl />
+                </DataTemplate>
+                
+                <DataTemplate DataType="{x:Type devices:SimStove}">
+                    <controls:StoveUserControl />
+                </DataTemplate>
+            </templates:DynamicDataTypeBasedTemplateSelector>
+        </controls:SimulatorControl>
+    </Grid>
+</Window>
+
